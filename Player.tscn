@@ -27,7 +27,7 @@ fov = 100.0
 transform = Transform( 1, 0, 0, 0, -5.96046e-08, 1, 0, -1, -5.96046e-08, 0, 1, 2 )
 
 [node name="player" parent="Camera/Pivot" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
+transform = Transform( 1, 0, 0, 0, -2.98023e-08, -1, 0, 1, -2.98023e-08, 0, 1, 5.96046e-08 )
 
 [node name="TextureRect" type="TextureRect" parent="Camera"]
 margin_left = 512.0

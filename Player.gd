@@ -12,9 +12,9 @@ var acceleration = 16
 var cam_sensitivity = 0.01
 
 # cam look
-var minLookAngle : float = -90.0
-var maxLookAngle : float = 90.0
-var lookSensitivity : float = 10.0
+var minLookAngle : float = -30.0
+var maxLookAngle : float = 110.0
+var lookSensitivity : float = 50.0
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 #var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -68,7 +68,6 @@ func _physics_process(delta: float) -> void:
 
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
-		#$Neck.look_at(translation + direction, Vector3.UP)
 	
 	var forward = global_transform.basis.z
 	var right = global_transform.basis.x
@@ -76,11 +75,8 @@ func _physics_process(delta: float) -> void:
 	print("forward " + str(forward))
 	print("right " + str(right))
 	
-	
 	var relativeDir = (forward*direction.y + right*direction.x) #calc new relative dir
 	print(relativeDir)
-	#calc what the game thinks is forwards based on the neck
-	#direction = (neck.transform.basis * Vector3(direction.x, 0, direction.y)).normalized()
 	
 	velocity.x = lerp(relativeDir.x, relativeDir.x*speed, acceleration*delta)
 	velocity.z = lerp(relativeDir.z, relativeDir.z*speed, acceleration*delta)
