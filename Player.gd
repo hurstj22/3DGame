@@ -72,11 +72,11 @@ func _physics_process(delta: float) -> void:
 	var forward = global_transform.basis.z
 	var right = global_transform.basis.x
 	
-	print("forward " + str(forward))
-	print("right " + str(right))
+	#print("forward " + str(forward))
+	#print("right " + str(right))
 	
 	var relativeDir = (forward*direction.y + right*direction.x) #calc new relative dir
-	print(relativeDir)
+	#print(relativeDir)
 	
 	velocity.x = lerp(relativeDir.x, relativeDir.x*speed, acceleration*delta)
 	velocity.z = lerp(relativeDir.z, relativeDir.z*speed, acceleration*delta)
