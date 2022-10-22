@@ -14,9 +14,9 @@ func _ready():
 
 func get_interaction_text():
 	if locked:
-		return "Enter safe code"
+		return "enter the safe code"
 	elif !empty:
-		return "Take key" 
+		return "take key" 
 	else:
 		return ""
 	
@@ -25,6 +25,8 @@ func get_interaction_text():
 func interact():
 	if locked:
 		locked = false #for now just unlock
+		#needs to load the safe screen and allow the player to enter a code
+		#if the code succeeds set locked to false otherwise keep it true
 	
 	elif !empty:
 		emit_signal("giveContentsToPlayer") #tell the player to get the key

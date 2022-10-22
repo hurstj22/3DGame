@@ -3,6 +3,7 @@ extends KinematicBody
 #Properties for the character
 export var speed = 14.0
 export var jump_impulse = 20.0
+export var safeKey = false
 
 var gravity = -75.0
 var max_gravity = -150
@@ -90,3 +91,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor() and velocity.y < 0:
 		velocity.y = 0 #don't keep accelerating down when on flat ground
+
+
+func _on_Safe_giveContentsToPlayer():
+	safeKey = true

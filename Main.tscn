@@ -12,7 +12,7 @@ material = SubResource( 13 )
 size = Vector3( 100, 1, 100 )
 
 [sub_resource type="BoxShape" id=5]
-extents = Vector3( 70, 1, 60 )
+extents = Vector3( 60, 0.5, 60 )
 
 [sub_resource type="SpatialMaterial" id=14]
 albedo_color = Color( 0.552941, 0.552941, 0.552941, 1 )
@@ -66,7 +66,7 @@ mesh = SubResource( 15 )
 skeleton = NodePath("")
 
 [node name="CollisionShape" type="CollisionShape" parent="Safe"]
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 5 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -131,3 +131,5 @@ margin_top = -30.0
 text = "Click to interact"
 align = 1
 valign = 1
+
+[connection signal="giveContentsToPlayer" from="Safe" to="Player" method="_on_Safe_giveContentsToPlayer"]
