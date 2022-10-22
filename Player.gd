@@ -1,15 +1,19 @@
 extends KinematicBody
 
 #Properties for the character
-export var speed = 14.0
+export var speed = 18.0
 export var jump_impulse = 20.0
 export var safeKey = false
+
+#to display what the player has collected
+onready var ItemsList = get_node("/root/Main/UI/ItemsListLabel")
+var currentItemsList = "Items Collected: "
 
 var gravity = -75.0
 var max_gravity = -150
 var velocity = Vector3.ZERO
 var mouseDelta : Vector2 = Vector2()
-var acceleration = 16
+var acceleration = 20
 var cam_sensitivity = 0.01
 
 # cam look
@@ -17,8 +21,6 @@ var minLookAngle : float = -30.0
 var maxLookAngle : float = 110.0
 var lookSensitivity : float = 50.0
 
-# Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
-#var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 onready var neck := $Neck
 onready var camera := $Camera
 func _unhandled_input(event: InputEvent) -> void:
@@ -26,12 +28,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	#if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-	#	if event is InputEventMouseMotion: #move and rotate the camera relative to the mouse
-			#neck.rotate_y(-event.relative.x * cam_sensitivity) #in radians
-			#camera.rotate_x(-event.relative.y * cam_sensitivity)
-			#limit the camera, otherwise the neck will rotate backwards and upside down
-			#camera.rotation.x = clamp(camera.rotation.x, deg2rad(-30), deg2rad(60))
 
 func _process(delta):
 	
@@ -95,3 +91,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_Safe_giveContentsToPlayer():
 	safeKey = true
+	collectItem("Safe Key")
+
+#adds an item to the player's UI List
+func collectItem(item: String):
+	currentItemsList += item + "\n"
+	ItemsList.set_text(currentItemsList) #update the list
+	
+
