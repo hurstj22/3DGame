@@ -4,7 +4,7 @@ export var door : NodePath
 export var isOpen = false
 export var locked = true
 
-onready var door_node = get_node(door)
+#onready var door_node = get_node("res://DoorAttempt2.tscn")
 
 func _ready():
 	pass
@@ -21,8 +21,10 @@ func get_interaction_text():
 func interact():
 	if !isOpen and !locked:
 		$AnimationPlayer.play("DoorOpen")
+		isOpen = true
 	elif isOpen:
 		$AnimationPlayer.play("DoorClose")
+		isOpen = false
 			
 
 #unlock the door as soon as the player has the key

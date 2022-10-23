@@ -2,8 +2,8 @@ extends KinematicBody
 
 #Properties for the character
 export var speed = 18.0
-export var jump_impulse = 20.0
-export var safeKey = false
+export var jump_impulse = 25.0
+export var doorKey = false
 
 #to display what the player has collected
 onready var ItemsList = get_node("/root/Main/UI/ItemsListLabel")
@@ -17,7 +17,7 @@ var acceleration = 20
 var cam_sensitivity = 0.01
 
 # cam look
-var minLookAngle : float = -30.0
+var minLookAngle : float = -50.0
 var maxLookAngle : float = 110.0
 var lookSensitivity : float = 50.0
 
@@ -90,12 +90,11 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_Safe_giveContentsToPlayer():
-	safeKey = true
-	collectItem("Safe Key")
+	doorKey = true
+	collectItem("Key")
 
 #adds an item to the player's UI List
 func collectItem(item: String):
 	currentItemsList += item + "\n"
 	ItemsList.set_text(currentItemsList) #update the list
 	
-

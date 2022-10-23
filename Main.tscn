@@ -3,7 +3,7 @@
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Interactable/InteractableSafe.gd" type="Script" id=3]
-[ext_resource path="res://door_model.tscn" type="PackedScene" id=5]
+[ext_resource path="res://DoorAttempt2.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0.265916, 0.242828, 0.285156, 1 )
@@ -58,6 +58,7 @@ extents = Vector3( 2, 10, 50 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, -2.08616e-07, 0, 2.08616e-07, 1, 0, 2, 0 )
+collision_mask = 3
 
 [node name="Ground" type="StaticBody" parent="."]
 collision_layer = 3
@@ -69,13 +70,8 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape" parent="Ground"]
 shape = SubResource( 5 )
 
-[node name="DoorModel" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11 )
-door = NodePath(".")
-
 [node name="Ceiling" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 0 )
-visible = false
 collision_layer = 3
 
 [node name="CeilingMeshInstance" type="MeshInstance" parent="Ceiling"]
@@ -96,6 +92,9 @@ skeleton = NodePath("")
 
 [node name="CollisionShape" type="CollisionShape" parent="Safe"]
 shape = SubResource( 5 )
+
+[node name="Door" parent="." instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -12 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
@@ -173,3 +172,4 @@ text = "Collected Items:"
 autowrap = true
 
 [connection signal="giveContentsToPlayer" from="Safe" to="Player" method="_on_Safe_giveContentsToPlayer"]
+[connection signal="giveContentsToPlayer" from="Safe" to="Door" method="_on_Safe_giveContentsToPlayer"]

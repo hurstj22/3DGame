@@ -11,5 +11,5 @@ dest_files=[ "res://.import/handle_open_sound.ogg-e94478752e4248cc3a5d8f8561f63e
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

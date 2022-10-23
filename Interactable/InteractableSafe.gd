@@ -7,7 +7,7 @@ export var locked = true
 export var code = "1234"
 export var empty = false
 
-onready var safe_node = get_node(safe)
+#onready var safe_node = get_node(safe)
 
 func _ready():
 	pass
