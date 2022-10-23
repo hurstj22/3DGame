@@ -6,10 +6,6 @@ export var locked = true
 
 onready var door_node = get_node(door)
 
-func _on_Area_mouse_entered():
-	$AnimationPlayer.play("Opening")
-
-
 func _ready():
 	pass
 
@@ -24,9 +20,9 @@ func get_interaction_text():
 
 func interact():
 	if !isOpen and !locked:
-		$AnimationPlayer.play("Opening")
+		$AnimationPlayer.play("DoorOpen")
 	elif isOpen:
-		$AnimationPlayer.play("RESET")
+		$AnimationPlayer.play("DoorClose")
 			
 
 #unlock the door as soon as the player has the key

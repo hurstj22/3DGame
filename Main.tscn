@@ -3,7 +3,7 @@
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Interactable/InteractableSafe.gd" type="Script" id=3]
-[ext_resource path="res://Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://door_model.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0.265916, 0.242828, 0.285156, 1 )
@@ -69,6 +69,10 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape" parent="Ground"]
 shape = SubResource( 5 )
 
+[node name="DoorModel" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11 )
+door = NodePath(".")
+
 [node name="Ceiling" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 0 )
 visible = false
@@ -81,9 +85,6 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape" parent="Ceiling"]
 shape = SubResource( 5 )
 
-[node name="Door" parent="Ceiling" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2 )
-
 [node name="Safe" type="StaticBody" parent="."]
 transform = Transform( 0.025, 0, 0, 0, 2.5, 0, 0, 0, 0.01, 0, 2, 16 )
 collision_layer = 3
@@ -95,9 +96,6 @@ skeleton = NodePath("")
 
 [node name="CollisionShape" type="CollisionShape" parent="Safe"]
 shape = SubResource( 5 )
-
-[node name="Door" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
