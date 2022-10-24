@@ -1,5 +1,7 @@
 extends KinematicBody
 
+signal victory
+
 #Properties for the character
 export var speed = 18.0
 export var jump_impulse = 25.0
@@ -98,3 +100,10 @@ func collectItem(item: String):
 	currentItemsList += item + "\n"
 	ItemsList.set_text(currentItemsList) #update the list
 	
+
+func win():
+	emit_signal("victory")
+	queue_free()
+
+func _on_DoorEnteredDetector_body_entered(body):
+	win()
