@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Interactable/InteractableSafe.gd" type="Script" id=3]
+[ext_resource path="res://Safe.tscn" type="PackedScene" id=3]
 [ext_resource path="res://DoorAttempt2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Art/monitor.obj" type="ArrayMesh" id=5]
 [ext_resource path="res://Art/lockerbody.obj" type="ArrayMesh" id=6]
@@ -23,13 +23,6 @@ albedo_color = Color( 0.756863, 0.694118, 0.694118, 1 )
 
 [sub_resource type="CubeMesh" id=17]
 material = SubResource( 16 )
-size = Vector3( 100, 1, 100 )
-
-[sub_resource type="SpatialMaterial" id=14]
-albedo_color = Color( 0.552941, 0.552941, 0.552941, 1 )
-
-[sub_resource type="CubeMesh" id=15]
-material = SubResource( 14 )
 size = Vector3( 100, 1, 100 )
 
 [sub_resource type="SpatialMaterial" id=11]
@@ -55,7 +48,7 @@ material = SubResource( 12 )
 size = Vector3( 2, 20, 100 )
 
 [sub_resource type="BoxShape" id=9]
-extents = Vector3( 2, 10, 50 )
+extents = Vector3( 1, 10, 50 )
 
 [node name="Main" type="Node"]
 
@@ -83,18 +76,6 @@ mesh = SubResource( 17 )
 skeleton = NodePath("")
 
 [node name="CollisionShape" type="CollisionShape" parent="Ceiling"]
-shape = SubResource( 5 )
-
-[node name="Safe" type="StaticBody" parent="."]
-transform = Transform( -1.09278e-09, 0, 0.01, 0, 2.5, 0, -0.025, 0, -4.37114e-10, -22, 5, -14 )
-collision_layer = 3
-script = ExtResource( 3 )
-
-[node name="ObjectInstance" type="MeshInstance" parent="Safe"]
-mesh = SubResource( 15 )
-skeleton = NodePath("")
-
-[node name="CollisionShape" type="CollisionShape" parent="Safe"]
 shape = SubResource( 5 )
 
 [node name="Door" parent="." instance=ExtResource( 4 )]
@@ -177,6 +158,9 @@ mesh = SubResource( 8 )
 [node name="CollisionShape" type="CollisionShape" parent="Walls/Wall2Z"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
 shape = SubResource( 9 )
+
+[node name="Safe" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 3.5, -15 )
 
 [node name="Lockers" type="Spatial" parent="."]
 
