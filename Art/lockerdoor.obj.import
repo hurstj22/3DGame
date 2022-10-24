@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/lockerdoor.obj-9c77d6a7f0e3cfe3a4ea6f8feb319288.mesh"
+
+[deps]
+
+files=[ "res://.import/lockerdoor.obj-9c77d6a7f0e3cfe3a4ea6f8feb319288.mesh" ]
+
+source_file="res://Art/lockerdoor.obj"
+dest_files=[ "res://.import/lockerdoor.obj-9c77d6a7f0e3cfe3a4ea6f8feb319288.mesh", "res://.import/lockerdoor.obj-9c77d6a7f0e3cfe3a4ea6f8feb319288.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
