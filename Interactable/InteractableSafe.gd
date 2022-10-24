@@ -24,6 +24,8 @@ func get_interaction_text():
 
 func interact():
 	if locked:
+		#keypad code goes here
+		
 		locked = false #for now just unlock
 		#needs to load the safe screen and allow the player to enter a code
 		#if the code succeeds set locked to false otherwise keep it true
