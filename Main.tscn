@@ -1,9 +1,12 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Interactable/InteractableSafe.gd" type="Script" id=3]
+[ext_resource path="res://Safe.tscn" type="PackedScene" id=3]
 [ext_resource path="res://DoorAttempt2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/monitor.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://Art/lockerbody.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://Art/desk.obj" type="ArrayMesh" id=7]
 
 [sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0.265916, 0.242828, 0.285156, 1 )
@@ -20,13 +23,6 @@ albedo_color = Color( 0.756863, 0.694118, 0.694118, 1 )
 
 [sub_resource type="CubeMesh" id=17]
 material = SubResource( 16 )
-size = Vector3( 100, 1, 100 )
-
-[sub_resource type="SpatialMaterial" id=14]
-albedo_color = Color( 0.552941, 0.552941, 0.552941, 1 )
-
-[sub_resource type="CubeMesh" id=15]
-material = SubResource( 14 )
 size = Vector3( 100, 1, 100 )
 
 [sub_resource type="SpatialMaterial" id=11]
@@ -52,12 +48,12 @@ material = SubResource( 12 )
 size = Vector3( 2, 20, 100 )
 
 [sub_resource type="BoxShape" id=9]
-extents = Vector3( 2, 10, 50 )
+extents = Vector3( 1, 10, 50 )
 
 [node name="Main" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, -2.08616e-07, 0, 2.08616e-07, 1, 0, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -2.08616e-07, 0, 2.08616e-07, 1, 0, 1, 0 )
 collision_mask = 3
 
 [node name="Ground" type="StaticBody" parent="."]
@@ -72,6 +68,7 @@ shape = SubResource( 5 )
 
 [node name="Ceiling" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 0 )
+visible = false
 collision_layer = 3
 
 [node name="CeilingMeshInstance" type="MeshInstance" parent="Ceiling"]
@@ -81,20 +78,8 @@ skeleton = NodePath("")
 [node name="CollisionShape" type="CollisionShape" parent="Ceiling"]
 shape = SubResource( 5 )
 
-[node name="Safe" type="StaticBody" parent="."]
-transform = Transform( 0.025, 0, 0, 0, 2.5, 0, 0, 0, 0.01, 0, 2, 16 )
-collision_layer = 3
-script = ExtResource( 3 )
-
-[node name="ObjectInstance" type="MeshInstance" parent="Safe"]
-mesh = SubResource( 15 )
-skeleton = NodePath("")
-
-[node name="CollisionShape" type="CollisionShape" parent="Safe"]
-shape = SubResource( 5 )
-
 [node name="Door" parent="." instance=ExtResource( 4 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -12 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -19 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
@@ -105,7 +90,7 @@ transform = Transform( 1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107,
 [node name="Walls" type="Spatial" parent="."]
 
 [node name="Wall1X" type="StaticBody" parent="Walls"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 9, 50 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 9, 20 )
 
 [node name="GroundMeshInstance" type="MeshInstance" parent="Walls/Wall1X"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 1, 0 )
@@ -116,20 +101,44 @@ skeleton = NodePath("")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 1, 0 )
 shape = SubResource( 7 )
 
-[node name="Wall2X" type="StaticBody" parent="Walls"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -50 )
+[node name="Wall2X_Top" type="StaticBody" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -20 )
 
-[node name="GroundMeshInstance" type="MeshInstance" parent="Walls/Wall2X"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 10, 0 )
+[node name="GroundMeshInstance" type="MeshInstance" parent="Walls/Wall2X_Top"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 18, 0 )
 mesh = SubResource( 6 )
 skeleton = NodePath("")
 
-[node name="CollisionShape" type="CollisionShape" parent="Walls/Wall2X"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 10, 0 )
+[node name="CollisionShape" type="CollisionShape" parent="Walls/Wall2X_Top"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 18, 0 )
+shape = SubResource( 7 )
+
+[node name="Wall2X3" type="StaticBody" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -20 )
+
+[node name="GroundMeshInstance" type="MeshInstance" parent="Walls/Wall2X3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -102, 10, 0 )
+mesh = SubResource( 6 )
+skeleton = NodePath("")
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/Wall2X3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -102, 10, 0 )
+shape = SubResource( 7 )
+
+[node name="Wall2X2" type="StaticBody" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -20 )
+
+[node name="GroundMeshInstance" type="MeshInstance" parent="Walls/Wall2X2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10, 0 )
+mesh = SubResource( 6 )
+skeleton = NodePath("")
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/Wall2X2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10, 0 )
 shape = SubResource( 7 )
 
 [node name="Wall1Z" type="StaticBody" parent="Walls"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Walls/Wall1Z"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
@@ -140,7 +149,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
 shape = SubResource( 9 )
 
 [node name="Wall2Z" type="StaticBody" parent="Walls"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Walls/Wall2Z"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
@@ -149,6 +158,79 @@ mesh = SubResource( 8 )
 [node name="CollisionShape" type="CollisionShape" parent="Walls/Wall2Z"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
 shape = SubResource( 9 )
+
+[node name="Safe" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 3.5, -15 )
+
+[node name="Lockers" type="Spatial" parent="."]
+
+[node name="lockerbody" type="MeshInstance" parent="Lockers"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18, 4, 11.75 )
+mesh = ExtResource( 6 )
+skeleton = NodePath("../../desk")
+
+[node name="lockerbody2" type="MeshInstance" parent="Lockers"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18, 4, 9.5 )
+mesh = ExtResource( 6 )
+skeleton = NodePath("../../desk")
+
+[node name="lockerbody3" type="MeshInstance" parent="Lockers"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18, 4, 7.25 )
+mesh = ExtResource( 6 )
+skeleton = NodePath("../../desk")
+
+[node name="lockerbody4" type="MeshInstance" parent="Lockers"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18, 4, 5 )
+mesh = ExtResource( 6 )
+skeleton = NodePath("../../desk")
+
+[node name="Monitors" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
+
+[node name="monitor" type="MeshInstance" parent="Monitors"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 11, 23 )
+mesh = ExtResource( 5 )
+skeleton = NodePath("../../desk")
+
+[node name="monitor7" type="MeshInstance" parent="Monitors"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 15, 23 )
+mesh = ExtResource( 5 )
+skeleton = NodePath("../../desk")
+
+[node name="monitor8" type="MeshInstance" parent="Monitors"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, 15, 23 )
+mesh = ExtResource( 5 )
+skeleton = NodePath("../../desk")
+
+[node name="monitor5" type="MeshInstance" parent="Monitors"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 7, 23 )
+mesh = ExtResource( 5 )
+skeleton = NodePath("../../desk")
+
+[node name="monitor6" type="MeshInstance" parent="Monitors"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 11, 23 )
+mesh = ExtResource( 5 )
+skeleton = NodePath("../../desk")
+
+[node name="monitor2" type="MeshInstance" parent="Monitors"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 7, 23 )
+mesh = ExtResource( 5 )
+skeleton = NodePath("../../desk")
+
+[node name="monitor3" type="MeshInstance" parent="Monitors"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 11, 23 )
+mesh = ExtResource( 5 )
+skeleton = NodePath("../../desk")
+
+[node name="monitor4" type="MeshInstance" parent="Monitors"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 7, 23 )
+mesh = ExtResource( 5 )
+skeleton = NodePath("../../desk")
+
+[node name="desk" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22, 2, -15 )
+mesh = ExtResource( 7 )
+skeleton = NodePath("../UI")
 
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
