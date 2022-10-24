@@ -1,5 +1,7 @@
 extends Interactable
 
+signal win_condition
+
 export var door : NodePath
 export var isOpen = false
 export var locked = true
@@ -22,6 +24,7 @@ func interact():
 	if !isOpen and !locked:
 		$AnimationPlayer.play("DoorOpen")
 		isOpen = true
+		emit_signal("win_condition") #for now always win once the player opens the door
 	elif isOpen:
 		$AnimationPlayer.play("DoorClose")
 		isOpen = false
