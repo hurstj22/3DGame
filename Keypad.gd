@@ -1,5 +1,8 @@
 extends Control
 
+signal correct_password
+signal incorrect_password
+
 const PASSWORD = "111"
 
 onready var label = $VBoxContainer/MarginContainer/Label
@@ -54,9 +57,11 @@ func _on_Button0_pressed():
 func _on_ButtonOK_pressed():
 	if label.text == PASSWORD:
 		print("CORRECT PASSWORD!")
+		emit_signal("correct_password")
 		#$ColorRect.instance().set_frame_color(1,1,1,1)
 	else:
 		print("INCORRECT PASSWORD")
 		label.text = ""
+		emit_signal("incorrect_password")
 	
 	

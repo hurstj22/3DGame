@@ -6,6 +6,7 @@ export var safe : NodePath
 export var locked = true
 export var code = "1234"
 export var empty = false
+onready var keypad = get_node("/root/Main/UI/Keypad")
 
 #onready var safe_node = get_node(safe)
 
@@ -25,8 +26,9 @@ func get_interaction_text():
 func interact():
 	if locked:
 		#keypad code goes here
-		
-		locked = false #for now just unlock
+		keypad.show()
+		get_tree().paused = true
+		#locked = false #for now just unlock
 		#needs to load the safe screen and allow the player to enter a code
 		#if the code succeeds set locked to false otherwise keep it true
 	
@@ -35,3 +37,13 @@ func interact():
 		empty = true
 		
 
+#unlock safe and hide the keypad
+func _on_Keypad_correct_password():
+	locked = false
+	keypad.hide()
+	get_tree().paused = false
+
+#keep safe locked, just hide the keypad
+func _on_Keypad_incorrect_password():
+	keypad.hide()
+	get_tree().paused = false

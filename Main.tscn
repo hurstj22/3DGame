@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Art/monitor.obj" type="ArrayMesh" id=5]
 [ext_resource path="res://Art/lockerbody.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://Art/desk.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://Keypad.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0.265916, 0.242828, 0.285156, 1 )
@@ -233,6 +234,7 @@ mesh = ExtResource( 7 )
 skeleton = NodePath("../UI")
 
 [node name="UI" type="Control" parent="."]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -253,5 +255,11 @@ margin_bottom = -10.0
 text = "Collected Items:"
 autowrap = true
 
+[node name="Keypad" parent="UI" instance=ExtResource( 8 )]
+pause_mode = 2
+visible = false
+
 [connection signal="giveContentsToPlayer" from="Safe" to="Player" method="_on_Safe_giveContentsToPlayer"]
 [connection signal="giveContentsToPlayer" from="Safe" to="Door" method="_on_Safe_giveContentsToPlayer"]
+[connection signal="correct_password" from="UI/Keypad" to="Safe" method="_on_Keypad_correct_password"]
+[connection signal="incorrect_password" from="UI/Keypad" to="Safe" method="_on_Keypad_incorrect_password"]
