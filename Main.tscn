@@ -4,7 +4,7 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Safe.tscn" type="PackedScene" id=3]
 [ext_resource path="res://DoorAttempt2.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Art/monitor.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://Monitor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Art/lockerbody.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://Art/desk.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://Keypad.tscn" type="PackedScene" id=8]
@@ -205,45 +205,20 @@ skeleton = NodePath("../../desk")
 [node name="Monitors" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
 
-[node name="monitor" type="MeshInstance" parent="Monitors"]
+[node name="Monitor" parent="Monitors" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 11, 23 )
-mesh = ExtResource( 5 )
-skeleton = NodePath("../../desk")
 
-[node name="monitor7" type="MeshInstance" parent="Monitors"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 15, 23 )
-mesh = ExtResource( 5 )
-skeleton = NodePath("../../desk")
-
-[node name="monitor8" type="MeshInstance" parent="Monitors"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7, 15, 23 )
-mesh = ExtResource( 5 )
-skeleton = NodePath("../../desk")
-
-[node name="monitor5" type="MeshInstance" parent="Monitors"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 7, 23 )
-mesh = ExtResource( 5 )
-skeleton = NodePath("../../desk")
-
-[node name="monitor6" type="MeshInstance" parent="Monitors"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 11, 23 )
-mesh = ExtResource( 5 )
-skeleton = NodePath("../../desk")
-
-[node name="monitor2" type="MeshInstance" parent="Monitors"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 7, 23 )
-mesh = ExtResource( 5 )
-skeleton = NodePath("../../desk")
-
-[node name="monitor3" type="MeshInstance" parent="Monitors"]
+[node name="Monitor2" parent="Monitors" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 11, 23 )
-mesh = ExtResource( 5 )
-skeleton = NodePath("../../desk")
 
-[node name="monitor4" type="MeshInstance" parent="Monitors"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 7, 23 )
-mesh = ExtResource( 5 )
-skeleton = NodePath("../../desk")
+[node name="Monitor3" parent="Monitors" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 11, 23 )
+
+[node name="Monitor4" parent="Monitors" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 7, 23 )
+
+[node name="Monitor5" parent="Monitors" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 7, 23 )
 
 [node name="desk" type="MeshInstance" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22, 2, -15 )
