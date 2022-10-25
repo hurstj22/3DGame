@@ -267,11 +267,11 @@ margin_left = -514.0
 margin_top = 92.8
 margin_right = 509.0
 margin_bottom = -88.0
-text = "Congratulations. You escaped! Press Enter to Return to the Main Menu"
+text = "Congratulations. You escaped! Press Enter to restart"
 align = 1
 
 [node name="DoorEnteredDetector" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73823, -21.1481 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73823, -23.3033 )
 collision_layer = 0
 collision_mask = 2
 monitorable = false

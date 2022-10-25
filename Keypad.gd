@@ -7,7 +7,11 @@ const PASSWORD = "111"
 
 onready var label = $VBoxContainer/MarginContainer/Label
 
-
+#func _unhandled_input(event):
+#	if event.is_action_pressed("keypad"):
+#		print(event)
+		
+		
 func key_press(digit):
 	if len(label.text) < 7:
 		label.text += str(digit)
