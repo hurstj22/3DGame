@@ -1,23 +1,22 @@
 extends Interactable
 
-export onready var text = $Label3D
+onready var textLabel = $Label3D
+export var text = ""
 export onready var backgroundColorMesh = $CSGMesh
 export var turnedOn = false
 
 func _ready():
-	pass
+	$Label3D.set_text(text)
 
 func get_interaction_text():
 	if !turnedOn:
-		turnedOn = true
 		return "Turn on monitor"
 	elif turnedOn:
-		turnedOn = false
 		return "Turn off monitor"
 
 func interact():
+	turnedOn = !turnedOn
 	turnOnMonitor(turnedOn)
-	
 
 #Toggle the monitors
 func turnOnMonitor(turnedOn: bool):
@@ -26,10 +25,10 @@ func turnOnMonitor(turnedOn: bool):
 	#show the
 	if turnedOn:
 		backgroundColorMesh.show()
-		text.show()
+		textLabel.show()
 	else:
 		backgroundColorMesh.hide()
-		text.hide()
+		textLabel.hide()
 
 #for setting the text on the monitors
 func setMonitorText(incoming: String):

@@ -8,7 +8,7 @@
 extents = Vector3( 1, 2, 3 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 32
+size = 42
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
@@ -32,6 +32,7 @@ modulate = Color( 0.0313726, 0.94902, 0, 1 )
 outline_modulate = Color( 0.254902, 0.964706, 0.0823529, 1 )
 text = "I am a monitor!"
 font = SubResource( 2 )
+autowrap = true
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0 )

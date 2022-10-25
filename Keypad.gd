@@ -3,7 +3,7 @@ extends Control
 signal correct_password
 signal incorrect_password
 
-const PASSWORD = "111"
+const PASSWORD = "245"
 
 onready var label = $VBoxContainer/MarginContainer/Label
 
