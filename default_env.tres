@@ -5,6 +5,5 @@
 [resource]
 background_mode = 2
 background_sky = SubResource( 1 )
-background_energy = 0.05
 ambient_light_color = Color( 0.219608, 0.0117647, 0.0117647, 1 )
 ambient_light_energy = 0.5
