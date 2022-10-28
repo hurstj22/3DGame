@@ -1,13 +1,51 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Art/lockerbody.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Art/metal.png" type="Texture" id=2]
+[ext_resource path="res://Art/lockerdoor.obj" type="ArrayMesh" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "close"
+length = 0.75
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Pivot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 1, 0, -1.02619, 0, 0.707107, 0, 0.707107, 1, 1, 1, 0.7, 1, 1, 0, -1.02619, 0, -2.18557e-08, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "open"
+length = 0.75
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Pivot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 1, 0, -1.02619, 0, 0, 0, 1, 1, 1, 1, 0.7, 1, 1, 0, -1.02619, 0, 0.707107, 0, 0.707107, 1, 1, 1 )
 
 [node name="Locker" type="Spatial"]
 
 [node name="body" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )
 material/0 = SubResource( 1 )
+
+[node name="Pivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, -4.37114e-08, 0, 1, 0, 4.37114e-08, 0, 1, 1, 0, -1.02619 )
+
+[node name="door" type="MeshInstance" parent="Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.979125, 0, 1 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/close = SubResource( 4 )
+anims/open = SubResource( 3 )
