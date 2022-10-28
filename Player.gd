@@ -38,13 +38,14 @@ func _process(delta):
 	mouseDelta = Vector2()
 
 func _input(event):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseMotion:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		mouseDelta = event.relative
+	elif event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	elif event is InputEventMouseMotion:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		mouseDelta = event.relative
+
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector3.ZERO

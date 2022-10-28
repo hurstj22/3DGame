@@ -109,25 +109,36 @@ margin_bottom = 130.0
 
 [node name="PlayButton" type="Button" parent="HBoxContainer"]
 visible = false
-margin_right = 157.0
+margin_right = 480.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
 text = "Start"
 
 [node name="HelpButton" type="Button" parent="HBoxContainer"]
 visible = false
-margin_right = 238.0
+margin_left = 242.0
+margin_right = 480.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
 text = "Help"
 
 [node name="QuitButton" type="Button" parent="HBoxContainer"]
 visible = false
+margin_left = 322.0
 margin_right = 480.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
 text = "Quit"
 
+[node name="PlayWithNux" type="Button" parent="HBoxContainer"]
+visible = false
+margin_left = 363.0
+margin_right = 480.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+text = "Nux Mode"
+
 [connection signal="pressed" from="HBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/HelpButton" to="." method="_on_HelpButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/PlayWithNux" to="." method="_on_PlayWithNux_pressed"]
