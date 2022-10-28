@@ -1,0 +1,129 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Art/ChairTextures/OfficeChairFull_LP_lambert1_MetallicSmoothness.png" type="Texture" id=1]
+[ext_resource path="res://Art/OfficeChairFull_LP.fbx" type="PackedScene" id=2]
+[ext_resource path="res://Art/ChairTextures/OfficeChairFull_LP_lambert1_AlbedoTransparency.png" type="Texture" id=3]
+[ext_resource path="res://Art/ChairTextures/OfficeChairFull_LP_lambert1_Normal.png" type="Texture" id=4]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=12]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=17]
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=19]
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=20]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_texture = ExtResource( 1 )
+
+[node name="OfficeChairFull_LP" instance=ExtResource( 2 )]
+
+[node name="Leg_LP4" parent="RootNode/OfficeChair_LP" index="0"]
+material/0 = SubResource( 1 )
+
+[node name="Leg_LP1" parent="RootNode/OfficeChair_LP" index="1"]
+material/0 = SubResource( 2 )
+
+[node name="Wheel_LP" parent="RootNode/OfficeChair_LP" index="2"]
+material/0 = SubResource( 7 )
+
+[node name="pCylinder25" parent="RootNode/OfficeChair_LP" index="3"]
+material/0 = SubResource( 8 )
+
+[node name="ChairBack_LP" parent="RootNode/OfficeChair_LP" index="4"]
+material/0 = SubResource( 9 )
+
+[node name="ChairSeat_LP4" parent="RootNode/OfficeChair_LP" index="5"]
+material/0 = SubResource( 10 )
+
+[node name="pCylinder26" parent="RootNode/OfficeChair_LP" index="6"]
+material/0 = SubResource( 11 )
+
+[node name="Wheel_LP1" parent="RootNode/OfficeChair_LP" index="7"]
+material/0 = SubResource( 12 )
+
+[node name="Leg_LP5" parent="RootNode/OfficeChair_LP" index="8"]
+material/0 = SubResource( 3 )
+
+[node name="Underside_LP" parent="RootNode/OfficeChair_LP" index="9"]
+material/0 = SubResource( 4 )
+
+[node name="pCube38" parent="RootNode/OfficeChair_LP" index="10"]
+material/0 = SubResource( 13 )
+
+[node name="Wheel_LP2" parent="RootNode/OfficeChair_LP" index="11"]
+material/0 = SubResource( 14 )
+
+[node name="pCylinder27" parent="RootNode/OfficeChair_LP" index="12"]
+material/0 = SubResource( 15 )
+
+[node name="pCube37" parent="RootNode/OfficeChair_LP" index="13"]
+material/0 = SubResource( 16 )
+
+[node name="pCylinder28" parent="RootNode/OfficeChair_LP" index="14"]
+material/0 = SubResource( 17 )
+
+[node name="Wheel_LP3" parent="RootNode/OfficeChair_LP" index="15"]
+material/0 = SubResource( 18 )
+
+[node name="Leg_LP3" parent="RootNode/OfficeChair_LP" index="16"]
+transform = Transform( -0.809017, 0, -0.587786, 0, 1, 0, 0.587786, 0, -0.809017, 3.46253, 0, 10.6552 )
+material/0 = SubResource( 5 )
+
+[node name="pCylinder29" parent="RootNode/OfficeChair_LP" index="17"]
+material/0 = SubResource( 19 )
+
+[node name="Wheel_LP4" parent="RootNode/OfficeChair_LP" index="18"]
+material/0 = SubResource( 20 )
+
+[node name="Leg_LP2" parent="RootNode/OfficeChair_LP" index="19"]
+material/0 = SubResource( 6 )
