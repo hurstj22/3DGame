@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
@@ -9,6 +10,7 @@
 [ext_resource path="res://Art/desk.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://Keypad.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Main.gd" type="Script" id=9]
+
 [ext_resource path="res://Art/background.jpg" type="Texture" id=10]
 [ext_resource path="res://Art/desk.jpg" type="Texture" id=11]
 
@@ -240,6 +242,7 @@ text = "4"
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22, 2, -15 )
 mesh = ExtResource( 7 )
 skeleton = NodePath("../UI")
+
 material/0 = SubResource( 21 )
 
 [node name="UI" type="Control" parent="."]
