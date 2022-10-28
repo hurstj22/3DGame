@@ -28,9 +28,6 @@ func interact():
 		#keypad code goes here
 		keypad.show()
 		get_tree().paused = true
-		#locked = false #for now just unlock
-		#needs to load the safe screen and allow the player to enter a code
-		#if the code succeeds set locked to false otherwise keep it true
 	
 	elif !empty:
 		emit_signal("giveContentsToPlayer") #tell the player to get the key
