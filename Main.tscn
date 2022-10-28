@@ -5,7 +5,7 @@
 [ext_resource path="res://Safe.tscn" type="PackedScene" id=3]
 [ext_resource path="res://DoorAttempt2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Monitor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Locker.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Art/lockerbody.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://Art/desk.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://Keypad.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Main.gd" type="Script" id=9]
@@ -94,7 +94,7 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -19 )
 environment = ExtResource( 1 )
 
 [node name="DirectionalLightDown2" type="DirectionalLight" parent="."]
-transform = Transform( 0.991025, -0.0953254, 0.0937116, 0.12941, 0.508518, -0.851271, 0.0334937, 0.855759, 0.51629, 23.7131, -5.66026, -3.75376 )
+transform = Transform( 0.991025, -0.0953251, 0.0937112, 0.12941, 0.508518, -0.851271, 0.0334937, 0.855759, 0.51629, 23.7131, -5.66026, -3.75376 )
 
 [node name="DirectionalLightUp" type="DirectionalLight" parent="."]
 transform = Transform( 0.866025, 0.25, 0.433013, 0, -0.866025, 0.5, 0.5, -0.433013, -0.75, -23, 14, 11 )
@@ -188,19 +188,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 3.5, -15 )
 code = "245"
 
 [node name="Lockers" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0 )
 
-[node name="Locker1" parent="Lockers" instance=ExtResource( 6 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.53489, 0 )
+[node name="lockerbody" type="MeshInstance" parent="Lockers"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18, 4, 11.75 )
+mesh = ExtResource( 6 )
+skeleton = NodePath("../../desk")
 
-[node name="Locker2" parent="Lockers" instance=ExtResource( 6 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.53489, 2.18063 )
+[node name="lockerbody2" type="MeshInstance" parent="Lockers"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18, 4, 9.5 )
+mesh = ExtResource( 6 )
+skeleton = NodePath("../../desk")
 
-[node name="Locker3" parent="Lockers" instance=ExtResource( 6 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.53489, 4.28974 )
+[node name="lockerbody3" type="MeshInstance" parent="Lockers"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18, 4, 7.25 )
+mesh = ExtResource( 6 )
+skeleton = NodePath("../../desk")
 
-[node name="Locker4" parent="Lockers" instance=ExtResource( 6 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.53489, 6.39482 )
+[node name="lockerbody4" type="MeshInstance" parent="Lockers"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18, 4, 5 )
+mesh = ExtResource( 6 )
+skeleton = NodePath("../../desk")
 
 [node name="Monitors" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
