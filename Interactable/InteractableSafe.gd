@@ -42,6 +42,7 @@ func _on_Keypad_correct_password():
 	locked = false
 	keypad.hide()
 	get_tree().paused = false
+	$AnimationPlayer.play("open")
 
 #keep safe locked, just hide the keypad
 func _on_Keypad_incorrect_password():
