@@ -3,7 +3,7 @@ extends KinematicBody
 signal victory
 
 #Properties for the character
-export var speed = 18.0
+export var speed = 20.0
 export var jump_impulse = 25.0
 export var doorKey = false
 
@@ -15,7 +15,7 @@ var gravity = -75.0
 var max_gravity = -150
 var velocity = Vector3.ZERO
 var mouseDelta : Vector2 = Vector2()
-var acceleration = 20
+var acceleration = 30
 var cam_sensitivity = 0.01
 
 # cam look
@@ -25,11 +25,6 @@ var lookSensitivity : float = 50.0
 
 onready var neck := $Neck
 onready var camera := $Camera
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	elif event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _process(delta):
 	
@@ -43,14 +38,19 @@ func _process(delta):
 	mouseDelta = Vector2()
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseButton:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	elif event.is_action_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	elif event is InputEventMouseMotion:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		mouseDelta = event.relative
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector3.ZERO
 	velocity.x = 0
 	velocity.z = 0
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	if Input.is_action_pressed("right"):
 		direction.x += 1

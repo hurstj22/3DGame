@@ -1,16 +1,17 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Safe.tscn" type="PackedScene" id=3]
 [ext_resource path="res://DoorAttempt2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Monitor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Locker.tscn" type="PackedScene" id=6]
+[ext_resource path="res://fonts/Montserrat-Medium.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Art/desk.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://Keypad.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Main.gd" type="Script" id=9]
 [ext_resource path="res://Art/background.jpg" type="Texture" id=10]
 [ext_resource path="res://Art/desk.jpg" type="Texture" id=11]
+[ext_resource path="res://Locker_Interactable.tscn" type="PackedScene" id=12]
 
 [sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0.265916, 0.242828, 0.285156, 1 )
@@ -37,7 +38,7 @@ material = SubResource( 24 )
 size = Vector3( 100, 20, 2 )
 
 [sub_resource type="BoxShape" id=7]
-extents = Vector3( 3, 5, 1 )
+extents = Vector3( 28, 11, 1 )
 
 [sub_resource type="CubeMesh" id=25]
 material = SubResource( 24 )
@@ -56,10 +57,15 @@ extents = Vector3( 1, 10, 50 )
 [sub_resource type="SpatialMaterial" id=21]
 albedo_texture = ExtResource( 11 )
 
+[sub_resource type="DynamicFont" id=26]
+size = 24
+font_data = ExtResource( 6 )
+
 [sub_resource type="BoxShape" id=18]
 extents = Vector3( 1.5, 3, 1 )
 
 [node name="Main" type="Node"]
+pause_mode = 2
 script = ExtResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
@@ -123,7 +129,7 @@ mesh = SubResource( 25 )
 skeleton = NodePath("")
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/Wall2X_Top"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 14, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 19, 0 )
 shape = SubResource( 7 )
 
 [node name="Wall2X3" type="StaticBody" parent="Walls"]
@@ -135,7 +141,7 @@ mesh = SubResource( 6 )
 skeleton = NodePath("")
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/Wall2X3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -102, 10, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 10, 0 )
 shape = SubResource( 7 )
 
 [node name="Wall2X2" type="StaticBody" parent="Walls"]
@@ -147,7 +153,7 @@ mesh = SubResource( 6 )
 skeleton = NodePath("")
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/Wall2X2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 10, 0 )
 shape = SubResource( 7 )
 
 [node name="Wall2X4" type="StaticBody" parent="Walls"]
@@ -191,17 +197,18 @@ code = "245"
 [node name="Lockers" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0 )
 
-[node name="Locker1" parent="Lockers" instance=ExtResource( 6 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.53489, 0 )
+[node name="Locker_Interactable" parent="Lockers" instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.333, 0 )
+collision_mask = 0
 
-[node name="Locker2" parent="Lockers" instance=ExtResource( 6 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.53489, 2.18063 )
+[node name="Locker_Interactable2" parent="Lockers" instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.333, 2.25 )
 
-[node name="Locker3" parent="Lockers" instance=ExtResource( 6 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.53489, 4.28974 )
+[node name="Locker_Interactable3" parent="Lockers" instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.333, 4.5 )
 
-[node name="Locker4" parent="Lockers" instance=ExtResource( 6 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.53489, 6.39482 )
+[node name="Locker_Interactable4" parent="Lockers" instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.333, 6.75 )
 
 [node name="Monitors" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5 )
@@ -281,6 +288,34 @@ margin_bottom = -88.0
 text = "Congratulations. You escaped! Press Enter to Return to the Main Menu"
 align = 1
 
+[node name="QuitButton" type="Button" parent="UI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.0
+margin_top = -24.0
+margin_right = 97.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 26 )
+text = "Quit"
+icon_align = 1
+
+[node name="MenuButton" type="Button" parent="UI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.0
+margin_top = 41.0
+margin_right = 97.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 26 )
+text = "Main Menu"
+icon_align = 1
+
 [node name="DoorEnteredDetector" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73823, -21.1481 )
 collision_layer = 0
@@ -296,4 +331,6 @@ shape = SubResource( 18 )
 [connection signal="giveContentsToPlayer" from="Safe" to="Door" method="_on_Safe_giveContentsToPlayer"]
 [connection signal="correct_password" from="UI/Keypad" to="Safe" method="_on_Keypad_correct_password"]
 [connection signal="incorrect_password" from="UI/Keypad" to="Safe" method="_on_Keypad_incorrect_password"]
+[connection signal="pressed" from="UI/QuitButton" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="UI/MenuButton" to="." method="_on_MenuButton_pressed"]
 [connection signal="body_entered" from="DoorEnteredDetector" to="Player" method="_on_DoorEnteredDetector_body_entered"]
