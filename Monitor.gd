@@ -20,11 +20,11 @@ func interact():
 	turnOnMonitor(turnedOn)
 
 #Toggle the monitors
-func turnOnMonitor(turnedOn: bool):
+func turnOnMonitor(MonitorStatus: bool):
 	#turnedOn = !turnedOn
-	print(turnedOn)
+	print(MonitorStatus)
 	#show the
-	if turnedOn:
+	if MonitorStatus:
 		backgroundColorMesh.show()
 		textLabel.show()
 		light.show()
