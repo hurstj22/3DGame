@@ -349,8 +349,48 @@ custom_fonts/font = SubResource( 26 )
 text = "Resume Game"
 icon_align = 1
 
+[node name="BombLoseScreen" type="ColorRect" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.807843, 0.207843, 0.207843, 1 )
+
+[node name="BombLoseMessage" type="Label" parent="UI"]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 59.0
+text = "The bomb exploded and you died. Sorry. Press Enter to return to the main menu"
+align = 1
+
+[node name="LockerNoteScreen" type="ColorRect" parent="UI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -275.0
+margin_top = -177.0
+margin_right = 275.0
+margin_bottom = 177.0
+
+[node name="LockerNoteMessage" type="Label" parent="UI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -264.0
+margin_top = -7.0
+margin_right = 266.0
+margin_bottom = 10.0
+text = "Try turning on the monitors and pay attention to the order."
+align = 1
+
 [node name="DoorEnteredDetector" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73823, -21.1481 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73823, -22.3749 )
 collision_layer = 0
 collision_mask = 2
 monitorable = false

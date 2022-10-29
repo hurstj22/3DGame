@@ -9,6 +9,7 @@ export var doorKey = false
 
 #to display what the player has collected
 onready var ItemsList = get_node("/root/Main/UI/ItemsListLabel")
+onready var Keypad = get_node("/root/Main/UI/Keypad")
 var currentItemsList = "Items Collected: "
 
 var gravity = -75.0
@@ -38,10 +39,15 @@ func _process(delta):
 	mouseDelta = Vector2()
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and !Keypad.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		mouseDelta = event.relative
-	elif event is InputEventMouseButton:
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
+		
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
