@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -15,8 +15,12 @@
 [ext_resource path="res://UI.gd" type="Script" id=13]
 [ext_resource path="res://fonts/Kirifont.tres" type="DynamicFont" id=14]
 [ext_resource path="res://Chair.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Interactable/InteractableBomb.gd" type="Script" id=16]
+[ext_resource path="res://Art/pictureframe.obj" type="ArrayMesh" id=16]
 [ext_resource path="res://Bomb.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Art/pictureframe-dog.png" type="Texture" id=18]
+[ext_resource path="res://Laptop.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Art/pictureframe-ocean.png" type="Texture" id=20]
+[ext_resource path="res://Plant.tscn" type="PackedScene" id=21]
 
 [sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0.265916, 0.242828, 0.285156, 1 )
@@ -80,6 +84,12 @@ extents = Vector3( 1.5, 3, 1 )
 [sub_resource type="CubeMesh" id=29]
 size = Vector3( 0.5, 0.01, 0.6 )
 
+[sub_resource type="SpatialMaterial" id=31]
+albedo_texture = ExtResource( 18 )
+
+[sub_resource type="SpatialMaterial" id=32]
+albedo_texture = ExtResource( 20 )
+
 [node name="Main" type="Node"]
 script = ExtResource( 9 )
 
@@ -99,7 +109,6 @@ shape = SubResource( 5 )
 
 [node name="Ceiling" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 0 )
-visible = false
 collision_layer = 3
 
 [node name="CeilingMeshInstance" type="MeshInstance" parent="Ceiling"]
@@ -116,10 +125,14 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -19 )
 environment = ExtResource( 1 )
 
 [node name="DirectionalLightDown2" type="DirectionalLight" parent="."]
-transform = Transform( 0.991025, -0.0953254, 0.0937116, 0.12941, 0.508518, -0.851271, 0.0334937, 0.855759, 0.51629, 23.7131, -5.66026, -3.75376 )
+transform = Transform( 0.991025, -0.0953254, 0.0937116, 0.12941, 0.508518, -0.851271, 0.0334937, 0.855759, 0.51629, 8.34818, -5.66026, -3.75376 )
+light_color = Color( 0.396078, 0.113725, 0.113725, 1 )
+light_energy = 0.5
 
 [node name="DirectionalLightUp" type="DirectionalLight" parent="."]
 transform = Transform( 0.866025, 0.25, 0.433013, 0, -0.866025, 0.5, 0.5, -0.433013, -0.75, -23, 14, 11 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 0.5
 
 [node name="Walls" type="Spatial" parent="."]
 
@@ -254,6 +267,20 @@ text = "4"
 
 [node name="Desk" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -17, 0.5, 6 )
+
+[node name="Laptop" parent="Desk" instance=ExtResource( 19 )]
+transform = Transform( 1.00078, 0, -1.14021e-07, 0, 0.869499, 0, 1.31236e-07, 0, 0.869499, -0.182285, 3.04174, -0.401134 )
+
+[node name="Desk4" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74226e-08, 0, 1, 0, 8.74226e-08, 0, -1, 7.99976, 0.517654, -12.3689 )
+
+[node name="Laptop" parent="Desk4" instance=ExtResource( 19 )]
+transform = Transform( 1.00078, 0, -1.14021e-07, 0, 0.869499, 0, 1.31236e-07, 0, 0.869499, -0.182285, 3.04174, -0.401134 )
+
+[node name="Chair4" parent="Desk4" instance=ExtResource( 15 )]
+transform = Transform( 2.62268e-07, 0, 2, 0, 2, 0, -2, 0, 2.62268e-07, -4.04683, 0.430038, 0.0353775 )
+collision_layer = 3
+collision_mask = 3
 
 [node name="Desk3" parent="." instance=ExtResource( 7 )]
 transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -17, 0.5, 9 )
@@ -429,7 +456,41 @@ mesh = SubResource( 29 )
 
 [node name="Bomb" parent="." instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01881, 1.48961, 0 )
-script = ExtResource( 16 )
+
+[node name="Photos" type="Spatial" parent="."]
+
+[node name="Photo1" type="MeshInstance" parent="Photos"]
+transform = Transform( 1, 0, 0, 0, 2.09643, 0, 0, 0, 2.09643, -23.9195, 10.3564, 13.04 )
+mesh = ExtResource( 16 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 31 )
+
+[node name="Photo2" type="MeshInstance" parent="Photos"]
+transform = Transform( -1, 0, -1.83276e-07, -1.62168e-07, -1.69987e-07, 3.88884, -7.08858e-15, 3.88884, 1.69987e-07, 18.8683, 9.62409, -10.8276 )
+mesh = ExtResource( 16 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 32 )
+
+[node name="Photo3" type="MeshInstance" parent="Photos"]
+transform = Transform( 1, 0, 0, 0, 2.09643, 0, 0, 0, 2.09643, -23.9195, 10.3564, 7.94327 )
+mesh = ExtResource( 16 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 31 )
+
+[node name="Photo4" type="MeshInstance" parent="Photos"]
+transform = Transform( 1, 0, 0, 0, 2.09643, 0, 0, 0, 2.09643, -23.9195, 10.3564, 2.91916 )
+mesh = ExtResource( 16 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 31 )
+
+[node name="Plant" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4245, 2.32044, -16.6596 )
+
+[node name="Plant2" parent="." instance=ExtResource( 21 )]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -12.7736, 2.32044, 7.39887 )
+
+[node name="Plant3" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1.47027e-07, 0, -1, 0, 1, 0, 1, 0, 1.47027e-07, 16.4976, 2.32044, 15.0701 )
 
 [connection signal="victory" from="Player" to="." method="_on_Player_victory"]
 [connection signal="giveContentsToPlayer" from="Safe" to="Player" method="_on_Safe_giveContentsToPlayer"]
