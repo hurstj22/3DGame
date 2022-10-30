@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://UI.gd" type="Script" id=13]
 [ext_resource path="res://fonts/Kirifont.tres" type="DynamicFont" id=14]
 [ext_resource path="res://Chair.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Interactable/InteractableBomb.gd" type="Script" id=16]
 [ext_resource path="res://Bomb.tscn" type="PackedScene" id=17]
 
 [sub_resource type="SpatialMaterial" id=13]
@@ -429,7 +428,6 @@ mesh = SubResource( 29 )
 
 [node name="Bomb" parent="." instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01881, 1.48961, 0 )
-script = ExtResource( 16 )
 
 [connection signal="victory" from="Player" to="." method="_on_Player_victory"]
 [connection signal="giveContentsToPlayer" from="Safe" to="Player" method="_on_Safe_giveContentsToPlayer"]

@@ -31,12 +31,14 @@ func interact():
 	
 	elif !empty:
 		emit_signal("giveContentsToPlayer") #tell the player to get the key
+		$key.hide()
 		empty = true
 		
 
 #unlock safe and hide the keypad
 func _on_Keypad_correct_password():
 	locked = false
+	$AnimationPlayer.play("open")
 	keypad.hide()
 	get_tree().paused = false
 
