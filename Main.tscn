@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -10,10 +10,13 @@
 [ext_resource path="res://Keypad.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Main.gd" type="Script" id=9]
 [ext_resource path="res://Art/background.jpg" type="Texture" id=10]
+[ext_resource path="res://Interactable/InteractableNote.gd" type="Script" id=11]
 [ext_resource path="res://Locker_Interactable.tscn" type="PackedScene" id=12]
 [ext_resource path="res://UI.gd" type="Script" id=13]
 [ext_resource path="res://fonts/Kirifont.tres" type="DynamicFont" id=14]
 [ext_resource path="res://Chair.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Interactable/InteractableBomb.gd" type="Script" id=16]
+[ext_resource path="res://Bomb.tscn" type="PackedScene" id=17]
 
 [sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0.265916, 0.242828, 0.285156, 1 )
@@ -64,8 +67,18 @@ font_data = ExtResource( 6 )
 size = 24
 font_data = ExtResource( 6 )
 
+[sub_resource type="DynamicFont" id=30]
+size = 12
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
 [sub_resource type="BoxShape" id=18]
 extents = Vector3( 1.5, 3, 1 )
+
+[sub_resource type="BoxShape" id=28]
+
+[sub_resource type="CubeMesh" id=29]
+size = Vector3( 0.5, 0.01, 0.6 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 9 )
@@ -382,11 +395,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -264.0
-margin_top = -7.0
-margin_right = 266.0
-margin_bottom = 10.0
-text = "Try turning on the monitors and pay attention to the order."
+margin_left = -179.5
+margin_top = -33.0
+margin_right = 179.5
+margin_bottom = 33.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 30 )
+text = "Try turning on the monitors and pay attention to the order. 
+(press enter to clear message)"
 align = 1
 
 [node name="DoorEnteredDetector" type="Area" parent="."]
@@ -399,6 +415,22 @@ monitorable = false
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0616226, 1.5954, -1.04142 )
 shape = SubResource( 18 )
 
+[node name="Note" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.42141, 5.03838, 0.47069 )
+script = ExtResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Note"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3255, -2.93381, 4.50799 )
+shape = SubResource( 28 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Note"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.77, -3.71308, 4.43753 )
+mesh = SubResource( 29 )
+
+[node name="Bomb" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01881, 1.48961, 0 )
+script = ExtResource( 16 )
+
 [connection signal="victory" from="Player" to="." method="_on_Player_victory"]
 [connection signal="giveContentsToPlayer" from="Safe" to="Player" method="_on_Safe_giveContentsToPlayer"]
 [connection signal="giveContentsToPlayer" from="Safe" to="Door" method="_on_Safe_giveContentsToPlayer"]
@@ -407,3 +439,4 @@ shape = SubResource( 18 )
 [connection signal="pressed" from="UI/QuitButton" to="UI" method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="UI/ResumeButton" to="UI" method="_on_ResumeButton_pressed"]
 [connection signal="body_entered" from="DoorEnteredDetector" to="Player" method="_on_DoorEnteredDetector_body_entered"]
+[connection signal="bomb_kill" from="Bomb" to="." method="_on_Bomb_bomb_kill"]

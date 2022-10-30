@@ -135,7 +135,7 @@ transform = Transform( 1, 0, 4.37114e-08, 0, 1, 0, -4.37114e-08, 0, 1, -1, 0, 1.
 shape = SubResource( 7 )
 
 [node name="Pivot" type="Spatial" parent="."]
-transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 1, 0, -1.02619 )
+transform = Transform( 1, 0, -4.37114e-08, 0, 1, 0, 4.37114e-08, 0, 1, 1, 0, -1.02619 )
 
 [node name="door" type="MeshInstance" parent="Pivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.979125, 0, 1 )

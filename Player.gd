@@ -37,6 +37,7 @@ func _process(delta):
 	rotation_degrees.y -= mouseDelta.x * lookSensitivity * delta
 	#reset the mouseDelta vector
 	mouseDelta = Vector2()
+	
 
 func _input(event):
 	if event is InputEventMouseMotion and !Keypad.visible:
@@ -44,6 +45,7 @@ func _input(event):
 		mouseDelta = event.relative
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
 		
 		
 func _unhandled_input(event: InputEvent) -> void:

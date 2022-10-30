@@ -7,8 +7,11 @@ func _on_Player_victory():
 	$Player/Camera/Crosshair.hide()
 	
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_accept") and $UI/VictoryScreen.visible:
-		get_tree().change_scene("res://TitleScreen.tscn")
+	if event.is_action_pressed("ui_accept"):
+		$UI/LockerNoteMessage.hide()
+		$UI/LockerNoteScreen.hide()
+		if $UI/VictoryScreen.visible:
+			get_tree().change_scene("res://TitleScreen.tscn")
 		
 	# handle keypad inputs here?
 
@@ -18,3 +21,9 @@ func _ready():
 		$UI/NuxModeClue.show()
 	else:
 		$UI/NuxModeClue.hide()
+
+
+func _on_Bomb_bomb_kill():
+	$UI/BombLoseScreen.show()
+	$UI/BombLoseMessage.show()
+	queue_free()
