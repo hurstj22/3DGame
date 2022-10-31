@@ -25,7 +25,7 @@ current = true
 fov = 100.0
 
 [node name="InteractionRayCast" type="RayCast" parent="Camera"]
-transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0 )
 enabled = true
 cast_to = Vector3( 0, 0, -9 )
 script = ExtResource( 4 )

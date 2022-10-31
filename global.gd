@@ -1,5 +1,5 @@
 extends Node
 
-signal Nux_Mode(active)
+#signal Nux_Mode(active)
 var nuxMode = false
 

@@ -1,7 +1,7 @@
 extends Interactable
 
 
-signal giveContentsToPlayer
+#signal giveContentsToPlayer
 
 export var locked = false
 export var empty = false

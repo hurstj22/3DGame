@@ -22,7 +22,7 @@ _global_script_class_icons={
 
 config/name="Escape3D"
 run/main_scene="res://TitleScreen.tscn"
-config/icon="res://icon.png"
+config/icon="res://Art/mockup.png"
 
 [autoload]
 
@@ -30,6 +30,7 @@ Global="*res://global.gd"
 
 [display]
 
+mouse_cursor/custom_image="res://Art/crosshair_smaller.png"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
