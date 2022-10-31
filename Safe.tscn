@@ -98,4 +98,4 @@ material/0 = SubResource( 6 )
 
 [node name="ErrorSoundNode" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -15.476
+volume_db = -53.238

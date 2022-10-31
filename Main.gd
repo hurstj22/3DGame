@@ -5,7 +5,7 @@ onready var congratssound = get_node("/root/Main/CongratsMusic")
 
 func _on_Player_victory():
 	$BackgroundMusic.stop()
-	$CongratsMusic.play()
+	#$CongratsMusic.play()
 	$UI/VictoryScreen.show()
 	$UI/VictoryMessage.show()
 	$Player/Camera/Crosshair.hide()

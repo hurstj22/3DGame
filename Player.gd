@@ -121,10 +121,10 @@ func collectItem(item: String):
 	
 
 func win():
-	$CongratsMusic.play()
+	#$CongratsMusic.play()
 	emit_signal("victory")
 	queue_free()
 
 func _on_DoorEnteredDetector_body_entered(body):
-	$CongratsMusic.play()
+	#$CongratsMusic.play()
 	win()
