@@ -20,7 +20,7 @@ var acceleration = 30
 var cam_sensitivity = 0.01
 
 # cam look
-var minLookAngle : float = -50.0
+var minLookAngle : float = -60.0
 var maxLookAngle : float = 110.0
 var lookSensitivity : float = 50.0
 

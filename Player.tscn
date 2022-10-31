@@ -27,7 +27,7 @@ fov = 100.0
 [node name="InteractionRayCast" type="RayCast" parent="Camera"]
 transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0 )
 enabled = true
-cast_to = Vector3( 0, 0, -7 )
+cast_to = Vector3( 0, 0, -9 )
 script = ExtResource( 4 )
 
 [node name="PlayerSprite" type="Spatial" parent="Camera"]
