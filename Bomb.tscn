@@ -11,9 +11,9 @@ albedo_texture = ExtResource( 2 )
 albedo_texture = ExtResource( 2 )
 
 [sub_resource type="SphereShape" id=3]
-radius = 1.4
+radius = 1.91226
 
-[node name="Bomb" type="Spatial"]
+[node name="Bomb" type="StaticBody"]
 script = ExtResource( 3 )
 
 [node name="bomb" type="MeshInstance" parent="."]
@@ -24,7 +24,5 @@ material/0 = SubResource( 1 )
 mesh = ExtResource( 1 )
 material = SubResource( 2 )
 
-[node name="StaticBody" type="StaticBody" parent="."]
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 3 )
