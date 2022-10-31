@@ -8,6 +8,7 @@ func get_interaction_text():
 	return "read note"
 	
 func interact():
+	$PaperSound.play()
 	noteScreen.show()
 	noteMessage.show()
 	
