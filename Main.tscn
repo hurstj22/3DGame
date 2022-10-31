@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://Laptop.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Art/pictureframe-ocean.png" type="Texture" id=20]
 [ext_resource path="res://Plant.tscn" type="PackedScene" id=21]
+[ext_resource path="res://sounds/congrats.wav" type="AudioStream" id=22]
+[ext_resource path="res://sounds/backgroundmusic.wav" type="AudioStream" id=23]
 
 [sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0.265916, 0.242828, 0.285156, 1 )
@@ -435,6 +437,8 @@ text = "Try turning on the monitors and pay attention to the order.
 (press enter to clear message)"
 align = 1
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="UI"]
+
 [node name="DoorEnteredDetector" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73823, -22.3749 )
 collision_layer = 0
@@ -494,6 +498,14 @@ transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819,
 
 [node name="Plant3" parent="." instance=ExtResource( 21 )]
 transform = Transform( 1.47027e-07, 0, -1, 0, 1, 0, 1, 0, 1.47027e-07, 16.4976, 2.32044, 15.0701 )
+
+[node name="BackgroundMusic" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 23 )
+autoplay = true
+
+[node name="CongratsMusic" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 22 )
+unit_db = 32.821
 
 [connection signal="victory" from="Player" to="." method="_on_Player_victory"]
 [connection signal="giveContentsToPlayer" from="Safe" to="Player" method="_on_Safe_giveContentsToPlayer"]

@@ -1,14 +1,45 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Art/lockerdoor.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Art/lockerbody.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://Art/metal.png" type="Texture" id=3]
+[ext_resource path="res://sounds/papersound.wav" type="AudioStream" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 3 )
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_texture = ExtResource( 3 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "PaperSound"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PaperSoundNode:stream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PaperSoundNode:stream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ null ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "close"
@@ -39,7 +70,7 @@ mesh = ExtResource( 2 )
 material/0 = SubResource( 1 )
 
 [node name="Pivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, -4.37114e-08, 0, 1, 0, 4.37114e-08, 0, 1, 1, 0, -1.02619 )
+transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 1, 0, -1.02619 )
 
 [node name="door" type="MeshInstance" parent="Pivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.979125, 0, 1 )
@@ -47,5 +78,9 @@ mesh = ExtResource( 1 )
 material/0 = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/PaperSound = SubResource( 5 )
+anims/RESET = SubResource( 6 )
 anims/close = SubResource( 3 )
 anims/open = SubResource( 4 )
+
+[node name="PaperSoundNode" type="AudioStreamPlayer" parent="."]

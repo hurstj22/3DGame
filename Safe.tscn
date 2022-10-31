@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Art/safedoor.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Art/safebody.obj" type="ArrayMesh" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Art/metal.png" type="Texture" id=4]
 [ext_resource path="res://Art/safedoor.png" type="Texture" id=5]
 [ext_resource path="res://Art/key.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://sounds/wronganswer.wav" type="AudioStream" id=7]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 1, 2 )
@@ -15,6 +16,23 @@ albedo_texture = ExtResource( 4 )
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 5 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "WrongPassword"
+tracks/0/type = "audio"
+tracks/0/path = NodePath("ErrorSoundNode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( -0.4 )
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "close"
@@ -69,6 +87,7 @@ skeleton = NodePath("../..")
 material/0 = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/WrongPassword = SubResource( 7 )
 anims/close = SubResource( 5 )
 anims/open = SubResource( 4 )
 
@@ -76,3 +95,7 @@ anims/open = SubResource( 4 )
 transform = Transform( 8.74228e-08, 4.37114e-08, -1, -1, -4.37114e-08, -8.74228e-08, -4.37114e-08, 1, 4.37114e-08, 0, 0.271627, 0.107197 )
 mesh = ExtResource( 6 )
 material/0 = SubResource( 6 )
+
+[node name="ErrorSoundNode" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -15.476

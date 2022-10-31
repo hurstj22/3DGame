@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Art/bomb.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Art/bomb.png" type="Texture" id=2]
 [ext_resource path="res://Interactable/InteractableBomb.gd" type="Script" id=3]
+[ext_resource path="res://sounds/stevebombfinal.wav" type="AudioStream" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
@@ -26,3 +27,6 @@ material = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 3 )
+
+[node name="BombSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )

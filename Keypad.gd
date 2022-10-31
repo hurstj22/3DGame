@@ -62,6 +62,9 @@ func _on_ButtonOK_pressed():
 	else:
 		print("INCORRECT PASSWORD")
 		label.text = ""
+		$ErrorSoundNode.play()
 		emit_signal("incorrect_password")
+		
+		
 	
 	
