@@ -1,4 +1,4 @@
-extends Node
+extends Interactable
 
 signal bomb_kill
 

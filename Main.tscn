@@ -455,7 +455,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.77, -3.71308, 4.43753 )
 mesh = SubResource( 29 )
 
 [node name="Bomb" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01881, 1.48961, 0 )
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 17.8274, 1.48961, 0 )
 
 [node name="Photos" type="Spatial" parent="."]
 

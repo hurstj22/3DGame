@@ -10,7 +10,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"):
 		$UI/LockerNoteMessage.hide()
 		$UI/LockerNoteScreen.hide()
-		if $UI/VictoryScreen.visible:
+		if $UI/VictoryScreen.visible or $UI/BombLoseScreen.visible:
 			get_tree().change_scene("res://TitleScreen.tscn")
 		
 	# handle keypad inputs here?
@@ -26,4 +26,3 @@ func _ready():
 func _on_Bomb_bomb_kill():
 	$UI/BombLoseScreen.show()
 	$UI/BombLoseMessage.show()
-	queue_free()
