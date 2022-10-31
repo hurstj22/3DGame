@@ -20,15 +20,17 @@ var acceleration = 30
 var cam_sensitivity = 0.01
 
 # cam look
-var minLookAngle : float = -60.0
-var maxLookAngle : float = 110.0
-var lookSensitivity : float = 50.0
+var minLookAngle : float = -70.0
+var maxLookAngle : float = 90.0
+var lookSensitivity : float = 45.0
+var mouseInsideViewPort = true
 
 onready var neck := $Neck
 onready var camera := $Camera
 
 func _process(delta):
-	
+	if !mouseInsideViewPort:
+		pass
 # rotate the camera along the x axis
 	camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity * delta
 #clamp camera x rotation axis
@@ -40,14 +42,22 @@ func _process(delta):
 	
 
 func _input(event):
-	if event is InputEventMouseMotion and !Keypad.visible:
+	if event is InputEventMouseMotion and mouseInsideViewPort and !Keypad.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		mouseDelta = event.relative
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
-		
-		
+
+func _notification(notif):
+	match notif:
+		NOTIFICATION_WM_MOUSE_EXIT:
+			#print('Mouse left window')
+			mouseInsideViewPort = false
+		NOTIFICATION_WM_MOUSE_ENTER:
+			#print('Mouse entered window')
+			mouseInsideViewPort = true
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

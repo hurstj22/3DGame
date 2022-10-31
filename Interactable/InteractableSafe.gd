@@ -15,9 +15,9 @@ func _ready():
 
 func get_interaction_text():
 	if locked:
-		return "enter the safe code"
+		return "Click to enter the safe code"
 	elif !empty:
-		return "take key" 
+		return "Click to take key" 
 	else:
 		return ""
 	

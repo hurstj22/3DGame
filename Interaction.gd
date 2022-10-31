@@ -34,5 +34,5 @@ func set_interaction_text(text):
 		interaction_label.set_visible(false)
 	else:
 		#pass in whatever the interaction will do
-		interaction_label.set_text("Click to %s" % text)
+		interaction_label.set_text("%s" % text)
 		interaction_label.set_visible(true)

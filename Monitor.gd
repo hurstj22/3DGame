@@ -11,9 +11,9 @@ func _ready():
 
 func get_interaction_text():
 	if !turnedOn:
-		return "Turn on monitor"
+		return "Click to turn on monitor"
 	elif turnedOn:
-		return "Turn off monitor"
+		return "Click to turn off monitor"
 
 func interact():
 	turnedOn = !turnedOn

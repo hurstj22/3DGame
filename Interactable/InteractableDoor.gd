@@ -13,11 +13,11 @@ func _ready():
 
 func get_interaction_text():
 	if !isOpen and !locked:
-		return "Open the door"
+		return "Click to open the door"
 	elif !isOpen and locked:
 		return "The door is locked"
 	elif isOpen:
-		return "Close the door"
+		return "Click to close the door"
 	
 
 func interact():
